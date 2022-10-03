@@ -10,3 +10,29 @@ const inquirer = require("inquirer");
 
 
 
+const addManager = () => {
+    return inquirer.prompt([
+    {
+      type: 'input',
+      name: 'name',
+      message: 'Name of the mananger of the team.',
+    },
+    {
+      type: 'input',
+      name: 'id',
+      message: "Enter the manager's ID.",
+    },
+    {
+      type: 'input',
+      name: 'email',
+      message: "Enter the mamnger's email address.",
+    },
+    {
+      type: 'input',
+      name: 'officeNumber',
+      message: "Enter the manager's office number.",
+    },
+    
+    ])
+
+}
