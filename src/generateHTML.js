@@ -1,3 +1,5 @@
+const teamMember = require("../lib/teamMember");
+
 const generateManager = function (manager) {
     return `
     <div class="col-4 mt-4">
@@ -48,6 +50,27 @@ const generateIntern = function (intern){
         </div>
     </div>`;
 }
+
+const generateHTML = (data) => {
+    
+    cardArray = [];
+
+    if (role === "Manager") {
+        const managerCard = generateManager(teamMember);
+        cardArray.push(managerCard);
+    }
+
+    if (role === "Engineer") {
+        const engineerCard = generateEnginner(teamMember);
+        cardArray.push(engineerCard);
+    }
+
+    if (role === "Intern") {
+        const internCard = generateIntern(teamMember);
+        cardArray.push(internCard)
+    }
+}
+
 
 const generateFinal = function (teamMembercards){
     return `

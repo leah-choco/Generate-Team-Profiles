@@ -106,7 +106,7 @@ const writeFile = data => {
 addManager()
 .then(addTeamMember)
 .then(inputArray => {
-  return generateFinal(inputArray);
+  return generateHTML(inputArray);
 })
 .then (pageHTML =>{
   return writeFile(pageHTML);
