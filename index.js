@@ -86,10 +86,10 @@ const addTeamMember = () => {
     let {name, id, email, role, github, school} = dataTeamMember
     let teamMember;
 
-    if (role === "Engineer"){
+    if (role === "Engineer") {
       teamMember = new Engineer (name, id, email, github);
 
-    }else (role === "Intern"){
+    } else if (role === "Intern") {
       teamMember = new Intern (name, id, email, school);
     }
 
@@ -97,3 +97,17 @@ const addTeamMember = () => {
   })
   
 };
+
+const writeFile = data => {
+  fs.writeFile("./dist/index.html");
+  console.log("Your page with team profiles has been generated.")
+};
+
+addManager()
+.then(addTeamMember)
+.then(inputArray => {
+  return generateFinal(inputArray);
+})
+.then (pageHTML =>{
+  return writeFile(pageHTML);
+})
