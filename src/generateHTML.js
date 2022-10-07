@@ -14,8 +14,8 @@ const generateManager = function (manager) {
                 <p class="office">Office Number: ${manager.officeNumber}</p>
             </div>
         </div>
-    </div>`;
-}
+    </div>`
+};
 
 const generateEnginner = function (engineer){
     return`
@@ -31,8 +31,8 @@ const generateEnginner = function (engineer){
                 <p class="github">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
             </div>
         </div>
-    </div>`;
-}
+    </div>`
+};
 
 const generateIntern = function (intern){
     return `
@@ -48,8 +48,8 @@ const generateIntern = function (intern){
                 <p class="school">School: ${intern.school}</p>
             </div>
         </div>
-    </div>`;
-}
+    </div>`
+};
 
 const generateHTML = (data) => {
     
@@ -69,7 +69,7 @@ const generateHTML = (data) => {
         const internCard = generateIntern(teamMember);
         cardArray.push(internCard)
     }
-}
+};
 
 
 const generateFinal = function (teamMembercards){
@@ -104,4 +104,6 @@ const generateFinal = function (teamMembercards){
     
     </body>
     </html>`
-}
+};
+
+module.exports= generateHTML;

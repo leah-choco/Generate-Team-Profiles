@@ -108,6 +108,6 @@ addManager()
 .then(inputArray => {
   return generateHTML(inputArray);
 })
-.then (pageHTML =>{
+.then (pageHTML => {
   return writeFile(pageHTML);
 })
