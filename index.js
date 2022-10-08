@@ -41,6 +41,7 @@ const addManager = () => {
     const manager = new Manager (name, id, email, officeNumber);
 
     inputArray.push(manager);
+    teamMemberOption();
 
   })
 };
@@ -71,14 +72,14 @@ const addTeamMember = () => {
   {
     type: 'input',
     name: 'github',
-    message: "Enter the team member's github username."
-    //Figure out how to choose(input) => input.role === "Engineer",
+    message: "Enter the team member's github username.",
+    when: (answers) => answers.role === "Engineer",
   },
   {
     type: 'input',
     name: 'school',
-    message: "Enter the team member's school."
-    //figure out how to choose (input) => input.role === "Intern"
+    message: "Enter the team member's school.",
+    when: (answers) => answers.role === "Intern"
   },
   ])
   .then(dataTeamMember => {
@@ -94,20 +95,39 @@ const addTeamMember = () => {
     }
 
     inputArray.push(teamMember);
+    teamMemberOption();
   })
   
 };
 
+const teamMemberOption = () => {
+  return inquirer.prompt([
+    {
+      type: 'rawlist',
+      name: 'next',
+      message: 'Next: Would you like to add another team member or are you finished?',
+      choices: ["Add team member", "Build team profile page."]
+    },
+  ])
+  .then((answers) => {
+
+    if(answers.next === "Add team member") {
+      addTeamMember();
+    }else{
+      writeFile(inputArray);
+    }
+
+  })
+}
+
 const writeFile = data => {
-  fs.writeFile("./dist/index.html");
-  console.log("Your page with team profiles has been generated.")
+  let formattedData = generateHTML(data);
+  fs.writeFile("./dist/index.html", formattedData, (err) => {
+    if(err) throw err;
+    console.log("Your page with team profiles has been generated.")
+  });
+ 
 };
 
-addManager()
-.then(addTeamMember)
-.then(inputArray => {
-  return generateHTML(inputArray);
-})
-.then (pageHTML => {
-  return writeFile(pageHTML);
-})
+addManager();
+

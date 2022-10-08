@@ -53,26 +53,31 @@ const generateIntern = function (intern){
 
 const generateHTML = (data) => {
     
-    cardArray = [];
+   let cardArray = [];
 
-    if (role === "Manager") {
-        const managerCard = generateManager(teamMember);
-        cardArray.push(managerCard);
+   for(let i = 0; i<data.length; i++){
+
+        if (data[i].getRole() === "Manager") {
+            const managerCard = generateManager(data[i]);
+            cardArray.push(managerCard);
+        }
+
+        if (data[i].getRole() === "Engineer") {
+            const engineerCard = generateEnginner(data[i]);
+            cardArray.push(engineerCard);
+        }
+
+        if (data[i].getRole() === "Intern") {
+            const internCard = generateIntern(data[i]);
+            cardArray.push(internCard)
+        }
     }
 
-    if (role === "Engineer") {
-        const engineerCard = generateEnginner(teamMember);
-        cardArray.push(engineerCard);
-    }
-
-    if (role === "Intern") {
-        const internCard = generateIntern(teamMember);
-        cardArray.push(internCard)
-    }
+    return generateFinal(cardArray.join(""));
 };
 
 
-const generateFinal = function (teamMembercards){
+const generateFinal = function (teamMemberCards){
     return `
     <!DOCTYPE html>
     <html lang="en">
