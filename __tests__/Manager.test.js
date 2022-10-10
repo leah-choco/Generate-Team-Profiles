@@ -12,4 +12,4 @@ test("Gets role of team member", () => {
 
     expect(manager.getRole()).toEqual("Manager");
 
-})
+});
