@@ -1,5 +1,7 @@
+//Importing teamMember class and functions
 const teamMember = require("../lib/teamMember");
 
+//Template to generate the manager cardbased on user input.
 const generateManager = function (manager) {
     return `
     <div class="col-4 mt-4">
@@ -17,6 +19,7 @@ const generateManager = function (manager) {
     </div>`
 };
 
+//Template to generate the Engineer card based on user input.
 const generateEnginner = function (engineer){
     return`
     <div class="col-4 mt-4">
@@ -34,6 +37,7 @@ const generateEnginner = function (engineer){
     </div>`
 };
 
+//Template to generate the Intern card based on user input.
 const generateIntern = function (intern){
     return `
     <div class="col-4 mt-4">
@@ -51,6 +55,7 @@ const generateIntern = function (intern){
     </div>`
 };
 
+//This function sorts through the roles to get the approparite data.
 const generateHTML = (data) => {
     
    let cardArray = [];
@@ -76,7 +81,7 @@ const generateHTML = (data) => {
     return generateFinal(cardArray.join(""));
 };
 
-
+//This template is for the above templates to complete the HTML file.
 const generateFinal = function (teamMemberCards){
     return `
     <!DOCTYPE html>

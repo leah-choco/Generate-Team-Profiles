@@ -1,17 +1,15 @@
 //All imported files
 const generateHTML = require("./src/generateHTML");
-
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
-
 const fs = require("fs");
 const inquirer = require("inquirer");
 
+//Empty array for user input
 const inputArray = [];
 
-
-
+//This function contains the prompt to add the Manager of the team and then adds input into the empty array.
 const addManager = () => {
   return inquirer.prompt([
   {
@@ -46,6 +44,7 @@ const addManager = () => {
   })
 };
 
+//This function contains the prompt to add more team members and add to the empty array.
 const addTeamMember = () => {
   return inquirer.prompt([
   {
@@ -100,6 +99,7 @@ const addTeamMember = () => {
   
 };
 
+//This function gives the user the option to add more team members or finish and build page.
 const teamMemberOption = () => {
   return inquirer.prompt([
     {
@@ -120,6 +120,7 @@ const teamMemberOption = () => {
   })
 }
 
+//This function adds the data to generatedHTML.js and then tells that data to input in the index.html.
 const writeFile = data => {
   let formattedData = generateHTML(data);
   fs.writeFile("./dist/index.html", formattedData, (err) => {
