@@ -92,7 +92,7 @@ const generateFinal = function (teamMemberCards){
     <body>
         <header>
           <div id="header-style">
-              <h1 class="navbar-brand mb-0 h1 w-100 text-center">Team Profile</h1>
+              <h2 class="text-center">Team Profile</h2>
           </div>
         </header>
       <main>
